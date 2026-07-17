@@ -1,39 +1,44 @@
 # 🎬 YouTube Clone
 
-YouTube Clone built using **Java Spring Boot**, **React (Vite)**, **PostgreSQL**, and **JWT Authentication**.
+A full-stack YouTube Clone application built using **Java Spring Boot**, **React (Vite)**, **PostgreSQL**, and **JWT Authentication**.
 
 ---
 
 # 📌 Project Description
 
+This project is a YouTube-like video sharing platform where users can register, login securely, upload videos, and manage video content.
 
-Currently completed:
-
-- User Registration
-- User Login
-- Password Encryption using BCrypt
-- JWT Authentication
-- React Frontend Setup
-- Registration connected with Backend
-- Login connected with Backend
-- JWT Token Generation
-
-Upcoming modules include video upload, video streaming, comments, likes, playlists, subscriptions, and more.
+The backend is developed using Spring Boot with JWT authentication and PostgreSQL database integration.  
+The frontend is built using React with Vite.
 
 ---
 
 # 🚀 Features Completed
 
+## Authentication Module
+
 - User Registration
 - User Login
-- BCrypt Password Encryption
+- Password Encryption using BCrypt
 - JWT Authentication
-- React Registration Page
-- React Login Page
 - Spring Security Configuration
-- PostgreSQL Database Integration
-- REST APIs
-- Axios Integration
+- Protected API Routes
+- PostgreSQL User Management
+
+
+## Video Upload Module
+
+- Video Upload API
+- Thumbnail Upload API
+- Multipart File Handling
+- Video File Storage
+- Thumbnail File Storage
+- Upload Folder Management
+- Video Entity Creation
+- Video Repository
+- Video Service Layer
+- Video Controller
+
 
 ---
 
@@ -49,6 +54,7 @@ Upcoming modules include video upload, video streaming, comments, likes, playlis
 - React Router
 - Ant Design
 
+
 ## Backend
 
 - Java 21
@@ -58,10 +64,13 @@ Upcoming modules include video upload, video streaming, comments, likes, playlis
 - Hibernate
 - JWT
 - Maven
+- BCrypt Password Encoder
+
 
 ## Database
 
 - PostgreSQL
+
 
 ## Tools
 
@@ -70,6 +79,8 @@ Upcoming modules include video upload, video streaming, comments, likes, playlis
 - GitHub
 - Postman
 - Maven
+- Ubuntu Linux
+
 
 ---
 
@@ -78,127 +89,127 @@ Upcoming modules include video upload, video streaming, comments, likes, playlis
 ```text
 youtube-clone/
 │
-├── backend
+├── backend/
 │   │
-│   ├── src
-│   │   ├── main
-│   │   │   ├── java
-│   │   │   │   └── com
-│   │   │   │       └── kajal
-│   │   │   │           └── backend
-│   │   │   │
-│   │   │   │               ├── config
-│   │   │   │               │     └── PasswordConfig.java
-│   │   │   │               │
-│   │   │   │               ├── controller
-│   │   │   │               │     └── UserController.java
-│   │   │   │               │
-│   │   │   │               ├── dto
-│   │   │   │               │     ├── LoginRequest.java
-│   │   │   │               │     ├── LoginResponse.java
-│   │   │   │               │     ├── RegisterRequest.java
-│   │   │   │               │     └── UserResponse.java
-│   │   │   │               │
-│   │   │   │               ├── entity
-│   │   │   │               │     └── User.java
-│   │   │   │               │
-│   │   │   │               ├── exception
-│   │   │   │               │
-│   │   │   │               ├── repository
-│   │   │   │               │     └── UserRepository.java
-│   │   │   │               │
-│   │   │   │               ├── security
-│   │   │   │               │     ├── CustomUserDetailsService.java
-│   │   │   │               │     ├── JwtFilter.java
-│   │   │   │               │     ├── JwtService.java
-│   │   │   │               │     └── SecurityConfig.java
-│   │   │   │               │
-│   │   │   │               ├── service
-│   │   │   │               │     └── UserService.java
-│   │   │   │               │
-│   │   │   │               ├── util
-│   │   │   │               │
-│   │   │   │               └── BackendApplication.java
-│   │   │   │
-│   │   │   └── resources
-│   │   │       ├── static
-│   │   │       ├── templates
-│   │   │       └── application.properties
-│   │   │
-│   │   └── test
-│   │       └── java
-│   │           └── com
-│   │               └── kajal
-│   │                   └── backend
-│   │                       └── BackendApplicationTests.java
+│   ├── src/main/java/com/kajal/backend
 │   │
-│   ├── target
-│   ├── HELP.md
-│   ├── mvnw
-│   ├── mvnw.cmd
-│   └── pom.xml
+│   ├── config
+│   │   └── PasswordConfig.java
+│   │
+│   ├── controller
+│   │   ├── UserController.java
+│   │   └── VideoController.java
+│   │
+│   ├── dto
+│   │   ├── LoginRequest.java
+│   │   ├── LoginResponse.java
+│   │   ├── RegisterRequest.java
+│   │   ├── UserResponse.java
+│   │   ├── VideoRequest.java
+│   │   └── VideoResponse.java
+│   │
+│   ├── entity
+│   │   ├── User.java
+│   │   └── Video.java
+│   │
+│   ├── repository
+│   │   ├── UserRepository.java
+│   │   └── VideoRepository.java
+│   │
+│   ├── security
+│   │   ├── CustomUserDetailsService.java
+│   │   ├── JwtFilter.java
+│   │   ├── JwtService.java
+│   │   └── SecurityConfig.java
+│   │
+│   ├── service
+│   │   ├── UserService.java
+│   │   └── VideoService.java
+│   │
+│   ├── resources
+│   │   └── application.properties
+│   │
+│   ├── pom.xml
+│   └── mvnw
 │
-├── frontend
-│   │
-│   ├── node_modules
-│   ├── public
-│   │   ├── favicon.svg
-│   │   └── icons.svg
+│
+├── frontend/
 │   │
 │   ├── src
 │   │   ├── api
 │   │   │   └── axios.js
 │   │   │
-│   │   ├── assets
-│   │   │
-│   │   ├── components
-│   │   │
-│   │   ├── layouts
-│   │   │
 │   │   ├── pages
 │   │   │   ├── Home.jsx
 │   │   │   ├── Login.jsx
-│   │   │   ├── NotFound.jsx
-│   │   │   └── Register.jsx
-│   │   │
-│   │   ├── routes
-│   │   │   └── AppRoutes.jsx
+│   │   │   ├── Register.jsx
+│   │   │   └── NotFound.jsx
 │   │   │
 │   │   ├── services
 │   │   │   └── userService.js
 │   │   │
-│   │   ├── styles
+│   │   ├── routes
+│   │   │   └── AppRoutes.jsx
 │   │   │
-│   │   ├── utils
-│   │   │
-│   │   ├── App.css
 │   │   ├── App.jsx
-│   │   ├── index.css
 │   │   └── main.jsx
 │   │
-│   ├── .gitignore
-│   ├── eslint.config.js
-│   ├── index.html
 │   ├── package.json
-│   ├── package-lock.json
-│   ├── README.md
 │   └── vite.config.js
 │
-└── uploads
+│
+├── upload/
+│   │
+│   ├── videos/
+│   │   └── uploaded video files
+│   │
+│   └── thumbnails/
+│       └── uploaded thumbnail files
+│
+└── README.md
 ```
 
 ---
 
-# ⚙ Prerequisites
+# 📁 Video Upload Flow
 
-Before running this project, install:
+```text
+User
+ |
+ |
+Upload Video + Thumbnail
+ |
+ |
+VideoController
+ |
+ |
+VideoService
+ |
+ |
+Save Files
+ |
+ |
+upload/videos
+upload/thumbnails
+```
 
-- Java 21
-- Maven
-- PostgreSQL
-- Node.js
-- npm
-- Git
+---
+
+# ⚙ Backend Configuration
+
+Video upload path configuration:
+
+```properties
+file.upload.video=/path/to/upload/videos/
+file.upload.thumbnail=/path/to/upload/thumbnails/
+```
+
+File size configuration:
+
+```properties
+spring.servlet.multipart.max-file-size=500MB
+spring.servlet.multipart.max-request-size=500MB
+```
 
 ---
 
@@ -208,7 +219,7 @@ Before running this project, install:
 git clone https://github.com/kajalpadavi7-sketch/youtube-clone.git
 ```
 
-Move into the project directory:
+Move into project:
 
 ```bash
 cd youtube-clone
@@ -218,134 +229,125 @@ cd youtube-clone
 
 # 💻 Backend Setup
 
-Move to backend folder
+Go to backend:
 
 ```bash
 cd backend
 ```
 
-Run Spring Boot application
-
-```bash
-mvn spring-boot:run
-```
-
-Or
+Run Spring Boot:
 
 ```bash
 ./mvnw spring-boot:run
+```
+
+Backend runs on:
+
+```
+http://localhost:8080
 ```
 
 ---
 
 # 🌐 Frontend Setup
 
-Move to frontend folder
+Go to frontend:
 
 ```bash
 cd frontend
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Run React application
+Run:
 
 ```bash
 npm run dev
 ```
 
----
+Frontend runs on:
 
-# 📦 Commands Used
-
-## Git
-
-```bash
-git init
-git add .
-git commit -m "Initial Commit"
-git branch -M main
-git remote add origin <repository-url>
-git push -u origin main
 ```
-
-## Backend
-
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-## Frontend
-
-```bash
-npm install
-npm run dev
+http://localhost:5173
 ```
 
 ---
 
-# 🔐 Authentication
-
-The project uses:
-
-- Spring Security
-- BCrypt Password Encoder
-- JWT Authentication
-
-Current Authentication Flow
+# 🔐 Authentication Flow
 
 ```text
-Client
-   │
-   ▼
+React Client
+
+      |
+      ▼
+
 Login API
-   │
-   ▼
-Validate Email & Password
-   │
-   ▼
+
+      |
+      ▼
+
+Validate User Credentials
+
+      |
+      ▼
+
+BCrypt Password Match
+
+      |
+      ▼
+
 Generate JWT Token
-   │
-   ▼
-Return Token to React
-   │
-   ▼
-Store Token
+
+      |
+      ▼
+
+Return Token
+
+      |
+      ▼
+
+Access Protected APIs
 ```
 
 ---
 
 # ✅ Completed Modules
 
-- Spring Boot Setup
-- PostgreSQL Configuration
+- Spring Boot Project Setup
+- PostgreSQL Database Integration
 - User Entity
 - User Repository
 - Registration API
 - Login API
 - BCrypt Password Encryption
-- JWT Token Generation
+- JWT Authentication
 - Spring Security
-- React Setup
+- React Frontend Setup
 - React Router
+- Axios Integration
 - Registration Page
 - Login Page
-- Axios Configuration
-- Registration Connected to Backend
-- Login Connected to Backend
+- Video Upload API
+- Thumbnail Upload API
+- Multipart File Handling
+- Video Storage System
+- Video Entity
+- Video Repository
+- Video Service
+
 
 ---
 
 # 🚧 Upcoming Modules
 
-- Video Upload
+- Video Database Management
+- Video Listing API
+- Home Feed
 - Video Streaming
-- Video List
 - Search Videos
 - Comments
 - Likes
@@ -357,7 +359,9 @@ Store Token
 - Recommended Videos
 - Deployment
 
+
 ---
 
+GitHub:
 
-GitHub: https://github.com/kajalpadavi7-sketch
+https://github.com/kajalpadavi7-sketch
