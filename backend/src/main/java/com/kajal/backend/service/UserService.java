@@ -47,10 +47,34 @@ public class UserService {
         return userRepository.save(user);
     }
     
-    public LoginResponse loginUser(LoginRequest request)
-    {
+//     public LoginResponse loginUser(LoginRequest request)
+//     {
+
+//     Optional<User> optionalUser = userRepository.findByEmail(request.getEmail());
+
+//     if (optionalUser.isEmpty()) {
+//         throw new RuntimeException("User not found");
+//     }
+
+//     User user = optionalUser.get();
+
+//     if (!passwordEncoder.matches(
+//         request.getPassword(),
+//         user.getPassword())) {
+
+//     throw new RuntimeException("Invalid password");
+// }
+//     String token = jwtService.generateToken(user.getEmail());
+
+//     return new LoginResponse(token);
+// }
+public LoginResponse loginUser(LoginRequest request)
+{
+    System.out.println("Email from request = " + request.getEmail());
 
     Optional<User> optionalUser = userRepository.findByEmail(request.getEmail());
+
+    System.out.println("User found = " + optionalUser.isPresent());
 
     if (optionalUser.isEmpty()) {
         throw new RuntimeException("User not found");
@@ -59,11 +83,12 @@ public class UserService {
     User user = optionalUser.get();
 
     if (!passwordEncoder.matches(
-        request.getPassword(),
-        user.getPassword())) {
+            request.getPassword(),
+            user.getPassword())) {
 
-    throw new RuntimeException("Invalid password");
-}
+        throw new RuntimeException("Invalid password");
+    }
+
     String token = jwtService.generateToken(user.getEmail());
 
     return new LoginResponse(token);

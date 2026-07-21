@@ -1,5 +1,6 @@
 /home/kaju/projects/youtube-clone/backend/src/main/java/com/kajal/backend/BackendApplication.java
 /home/kaju/projects/youtube-clone/backend/src/main/java/com/kajal/backend/config/PasswordConfig.java
+/home/kaju/projects/youtube-clone/backend/src/main/java/com/kajal/backend/config/WebConfig.java
 /home/kaju/projects/youtube-clone/backend/src/main/java/com/kajal/backend/controller/UserController.java
 /home/kaju/projects/youtube-clone/backend/src/main/java/com/kajal/backend/controller/VideoController.java
 /home/kaju/projects/youtube-clone/backend/src/main/java/com/kajal/backend/dto/LoginRequest.java
