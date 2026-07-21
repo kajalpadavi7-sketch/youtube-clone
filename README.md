@@ -28,6 +28,8 @@ The frontend is built using React with Vite.
 
 ## Video Upload Module
 
+## Video Module
+
 - Video Upload API
 - Thumbnail Upload API
 - Multipart File Handling
@@ -38,6 +40,9 @@ The frontend is built using React with Vite.
 - Video Repository
 - Video Service Layer
 - Video Controller
+- Video Listing API
+- Display Videos on Home Page
+- React Video Card Component
 
 
 ---
@@ -95,7 +100,7 @@ youtube-clone/
 │   │
 │   ├── config
 │   │   └── PasswordConfig.java
-│   │
+│   │   └── WebConfig.java
 │   ├── controller
 │   │   ├── UserController.java
 │   │   └── VideoController.java
@@ -132,31 +137,38 @@ youtube-clone/
 │   ├── pom.xml
 │   └── mvnw
 │
+│frontend/
 │
-├── frontend/
-│   │
-│   ├── src
-│   │   ├── api
-│   │   │   └── axios.js
-│   │   │
-│   │   ├── pages
-│   │   │   ├── Home.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── Register.jsx
-│   │   │   └── NotFound.jsx
-│   │   │
-│   │   ├── services
-│   │   │   └── userService.js
-│   │   │
-│   │   ├── routes
-│   │   │   └── AppRoutes.jsx
-│   │   │
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── package.json
-│   └── vite.config.js
+├── src/
 │
+│   ├── api/
+│   │   └── axios.js
+│   │
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── BottomNav.jsx
+│   │   └── VideoCard.jsx
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── UploadVideo.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── routes/
+│   │   └── AppRoutes.jsx
+│   │
+│   ├── services/
+│   │   ├── userService.js
+│   │   └── videoService.js
+│   │
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+├── package.json
+└── vite.config.js
 │
 ├── upload/
 │   │
@@ -170,14 +182,14 @@ youtube-clone/
 ```
 
 ---
-
-# 📁 Video Upload Flow
-
-```text
+------------video Flow----------------------------
 User
  |
  |
-Upload Video + Thumbnail
+React Upload Page
+ |
+ |
+Axios Multipart Request
  |
  |
 VideoController
@@ -186,13 +198,25 @@ VideoController
 VideoService
  |
  |
-Save Files
+Save Video File
  |
  |
-upload/videos
-upload/thumbnails
-```
-
+Save Thumbnail File
+ |
+ |
+Save Video Details
+ |
+ |
+PostgreSQL Database
+ |
+ |
+GET /api/videos
+ |
+ |
+React Home Page
+ |
+ |
+VideoCard Display
 ---
 
 # ⚙ Backend Configuration
