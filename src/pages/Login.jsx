@@ -1,7 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { loginUser } from "../services/userService";   
 export default function Login() {
   const navigate = useNavigate();
 
@@ -18,28 +17,23 @@ export default function Login() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/users/login",
-        loginData
-      );
+  try {
+    const response = await loginUser(loginData);
 
-      console.log(response.data);
+    console.log(response.data);
 
-      // Save JWT Token
-      localStorage.setItem("token", response.data.token);
+    localStorage.setItem("token", response.data.token);
 
-      alert("Login Successful");
+    alert("Login Successful");
 
-      navigate("/");
-    } catch (error) {
-      console.error(error);
-      alert("Invalid Email or Password");
-    }
-  };
-
+    navigate("/");
+  } catch (error) {
+    console.error(error);
+    alert("Invalid Email or Password");
+  }
+};
   return (
     <div
       style={{
